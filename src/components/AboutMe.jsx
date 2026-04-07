@@ -5,8 +5,8 @@ import { useFollowers } from '../hooks/useFollowers';
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 export const AboutMe = () => {
-    const { followers, isLoading } = useFollowers(18000);
-    const count = useMotionValue(18000);
+    const { followers, isLoading } = useFollowers(25000);
+    const count = useMotionValue(25000);
 
     useEffect(() => {
         if (!isLoading) {

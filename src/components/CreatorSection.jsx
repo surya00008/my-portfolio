@@ -4,8 +4,8 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import { useEffect } from "react";
 
 export const CreatorSection = () => {
-  const { followers, isLoading } = useFollowers(18000);
-  const count = useMotionValue(18000); // Start animation from 18k
+  const { followers, isLoading } = useFollowers(25000);
+  const count = useMotionValue(25000); // Start animation from 25k
 
   useEffect(() => {
     if (!isLoading) {
