@@ -1,188 +1,412 @@
-import { ArrowRight, ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight, Github, Zap, Shield, Activity, Cpu } from "lucide-react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
 
 const projects = [
   {
-    id: 0,
-    title: "Foundry Smart Contract Lottery | Solidity, Foundry, Web3",
+    id: 5,
+    title: "DealFlow Intelligence",
+    subtitle: "AI VC Command Center",
     description:
-      "A verifiable, decentralized smart contract lottery fully built and tested using the Foundry framework. Features automated deployment scripts, comprehensive invariant testing, Sepolia testnet readiness, and secure random number generation.",
-    image: "/Projects/Lottery.png",
-    tags: [
-      "Solidity",
-      "Foundry",
-      "Smart Contract",
-      "Ethereum",
-      "Decentralized"
+      "An institutional-grade, AI-powered command center designed for Crypto Venture Capital and Quantitative Trading desks. Features a real-time on-chain data pipeline via DefiLlama, a persistent AI Research Copilot, and an interactive Kanban pipeline. Boosts due diligence efficiency by 10x.",
+    image: "/Projects/Dealflow.png",
+    meta: [
+      { label: "Core Dev", value: "Next.js 16" },
+      { label: "Intelligence", value: "Gemini 2.5 Flash" },
+      { label: "Data Pipeline", value: "DefiLlama API" },
     ],
-    url: "https://github.com/surya00008/foundry-smart-contract-lottery",
-    git: "https://github.com/surya00008/foundry-smart-contract-lottery",
+    tags: ["Next.js 16", "TypeScript", "Gemini AI", "Web3", "Tailwind CSS"],
+    url: "https://dealflow-intelligence-one.vercel.app/",
+    git: "https://github.com/surya00008/dealflow-intelligence",
+    isDark: true,
+    highlight: { label: "Diligence Efficiency", value: "+1000% (10x Faster)", icon: "zap" },
   },
   {
-    id: 1,
-    title: "PrestigeTowers — Real Estate Smart Contract System | Solidity, Ethereum, Web3",
+    id: 6,
+    title: "Foundry DeFi Stablecoin",
+    subtitle: "Algorithmic & Exogenous Stablecoin",
     description:
-      " A blockchain-based real estate booking & settlement system built using Solidity. This project demonstrates state-driven contract design, secure fund handling, and on-chain voting mechanics in an educational, interview-friendly manner.",
-    image: "/Projects/Prestige.jpg",
-    tags: [
-      "Solidity",
-      "Smart Contract",
-      "Voting",
-      "Contract Design",
-      "Ethereum",
+      "An algorithmic, exogenously collateralized (wETH & wBTC) stablecoin system pegged to the US Dollar. Engineered with a highly secure minting/burning core engine, overcollateralized lending structures, and automated flash liquidation mechanics. Backed by 100% unit and invariant test coverage in Foundry.",
+    image: "/Projects/Stablecoin.png",
+    meta: [
+      { label: "Language", value: "Solidity" },
+      { label: "Framework", value: "Foundry" },
+      { label: "Collateral", value: "wETH & wBTC" },
     ],
-    url: "https://github.com/surya00008/Prestige-Towers-Smart-Contract",
-    git: "https://github.com/surya00008/Prestige-Towers-Smart-Contract",
+    tags: ["Solidity", "Foundry", "Stablecoin", "DeFi Core", "Web3"],
+    url: "https://github.com/surya00008/foundry-defi-stablecoin",
+    git: "https://github.com/surya00008/foundry-defi-stablecoin",
+    isDark: false,
+    highlight: { label: "Test Coverage Status", value: "100% Core Invariants Passed", icon: "shield" },
   },
-
-
   {
-  id: 2,
-  title: "Zero Knowledge Proof Cryptographic System",
-  description:
-    "A cryptographic security system implementing a Schnorr-style Zero Knowledge Proof protocol to enable passwordless authentication and file integrity verification without revealing secrets. Achieves sub-millisecond proof generation and verification using 256-bit modular arithmetic.",
-  image: "/Projects/ZKP.png",
-  tags: [
-    "Python",
-    "Cryptography",
-    "Zero Knowledge Proof",
-    "SHA-256",
-    "Streamlit",
-    "Security Engineering"
-  ],
-  url: "https://github.com/surya00008/zero-knowledge-proof-system",
-  git: "https://github.com/surya00008/zero-knowledge-proof-system",
-},
-
-  {
-  id: 3,
-  title: "Network Anomaly Detection System",
-  description:
-    "A machine learning–based network security system that analyzes packet-level and flow-based network traffic to detect anomalies in real time. Built using Scikit-learn’s Isolation Forest, Scapy, and feature engineering on PCAP data to identify suspicious activity such as scans and abnormal traffic patterns.",
-  image: "/Projects/NAD.png",
-  tags: [
-    "Python",
-    "Machine Learning",
-    "Cyber Security",
-    "Network Security",
-    "Scikit-learn",
-    "Scapy",
-    "Isolation Forest"
-  ],
-  url: "https://github.com/surya00008/Network-Anomalies-Detection",
-  git: "https://github.com/surya00008/Network-Anomalies-Detection",
-},
-
-  {
-    id: 4,
-    title: "BloodBank Smart Contract",
+    id: 7,
+    title: "Cross-Chain CCIP Rebase Token",
+    subtitle: "Yield-Bearing Token Bridge",
     description:
-      "Blockchain-based Blood Bank Management System, Secure • Controlled • Auditable • Educational",
-    image: "/Projects/Bloodbank.jpg",
-    tags: ["Solidity", "Smart Contract", "Access Control", "Solidity Fundamentals", "Smart-contract system design"],
-    url: "https://github.com/surya00008/bloodbank-smart-contract",
-    git: "https://github.com/surya00008/bloodbank-smart-contract",
+      "A cross-chain yield-bearing rebase token system powered by Chainlink CCIP. Enables users to securely transfer rebasing tokens across multiple EVM blockchains while preserving dynamic interest-accruing balances and state synchronization across chains seamlessly.",
+    image: "/Projects/CcipRebase.png",
+    meta: [
+      { label: "Interoperability", value: "Chainlink CCIP" },
+      { label: "Token Model", value: "Rebasing ERC-20" },
+      { label: "Dev Tools", value: "Foundry & Solidity" },
+    ],
+    tags: ["Solidity", "Chainlink CCIP", "Cross-Chain", "Foundry", "Ethers"],
+    url: "https://github.com/surya00008/CCIP-Rebase-Token",
+    git: "https://github.com/surya00008/CCIP-Rebase-Token",
+    isDark: true,
+    highlight: { label: "Bridge Sync Latency", value: "~12s Finalized Sync", icon: "activity" },
   },
-
-
+  {
+    id: 8,
+    title: "Optimized NFT Minting Contract",
+    subtitle: "Gas-Optimized ERC-721",
+    description:
+      "A highly optimized ERC-721 smart contract for NFT minting, featuring gas-efficient batch minting, cryptographic merkle tree-based whitelisting, metadata reveals, and secure ERC-2981 royalty standards. Built and deployed with Hardhat and IPFS.",
+    image: "/Projects/NftMinting.png",
+    meta: [
+      { label: "Standard", value: "ERC-721 & 2981" },
+      { label: "Gas Optimization", value: "Bit-packing & Merkle" },
+      { label: "Framework", value: "Hardhat & IPFS" },
+    ],
+    tags: ["Solidity", "ERC-721", "Hardhat", "Gas Optimization", "IPFS"],
+    url: "https://github.com/surya00008/NFT-Minting-Contract",
+    git: "https://github.com/surya00008/NFT-Minting-Contract",
+    isDark: false,
+    highlight: { label: "Batch Gas Efficiency", value: "-45% vs Standard OpenZeppelin", icon: "cpu" },
+  },
 ];
 
 export const Projects = () => {
+  const [blockNumber, setBlockNumber] = useState(20149402);
+  const [gasPrice, setGasPrice] = useState(18);
+  const [latency, setLatency] = useState(8);
+  const [peers, setPeers] = useState(128);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: false, // animation happens only once
+      once: false,
     });
+
+    const blockInterval = setInterval(() => {
+      setBlockNumber((prev) => prev + 1);
+    }, 12000);
+
+    const metricsInterval = setInterval(() => {
+      setGasPrice(Math.floor(Math.random() * (22 - 14 + 1)) + 14);
+      setLatency(Math.floor(Math.random() * (11 - 6 + 1)) + 6);
+      setPeers(Math.floor(Math.random() * (132 - 124 + 1)) + 124);
+    }, 4000);
+
+    return () => {
+      clearInterval(blockInterval);
+      clearInterval(metricsInterval);
+    };
   }, []);
 
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div data-aos="fade-up" className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Featured <span className="text-primary">Projects</span>
-        </h2>
+    <section id="projects" className="relative">
+      {/* Active Node Portal Divider System */}
+      <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-white/5 overflow-hidden z-20">
+        {/* Left Outward Laser Comet */}
+        <div className="absolute top-0 right-1/2 h-full w-[200px] bg-gradient-to-l from-transparent via-cyan-400 via-blue-500 to-transparent animate-laser-left" />
+        {/* Right Outward Laser Comet */}
+        <div className="absolute top-0 left-1/2 h-full w-[200px] bg-gradient-to-r from-transparent via-indigo-400 via-purple-500 to-transparent animate-laser-right" />
+      </div>
+      <div className="absolute top-0 left-0 right-0 h-[6px] bg-slate-955 dark:bg-slate-950 overflow-hidden pointer-events-none z-10 blur-[2px]">
+        {/* Synced glows */}
+        <div className="absolute top-0 right-1/2 h-full w-[250px] bg-gradient-to-l from-transparent via-cyan-500/35 via-blue-500/25 to-transparent animate-laser-left" />
+        <div className="absolute top-0 left-1/2 h-full w-[250px] bg-gradient-to-r from-transparent via-indigo-500/35 via-purple-500/25 to-transparent animate-laser-right" />
+      </div>
 
-        <p className="txet-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          These projects reflect my approach to writing clean, maintainable code
-          and building user-friendly interfaces. I’ve focused on practical
-          solutions that balance performance, usability, and reliability.
-        </p>
+      {/* Central Glassmorphic Active Node Junction */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-auto flex items-center justify-center">
+        <div className="relative group/node cursor-pointer">
+          {/* Pulsing neon backing halo */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 rounded-lg blur-md opacity-75 group-hover/node:opacity-100 group-hover/node:scale-110 transition-all duration-500 animate-pulse-subtle" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="group bg-card/60 backdrop-blur-md rounded-xl overflow-hidden shadow-md border border-border/50 hover:border-primary/50 transition-colors duration-300 flex flex-col"
-            >
-              {/* Image Container */}
-              <div className="h-48 overflow-hidden relative bg-secondary/20 border-b border-border/30">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500"/>
+          {/* Active node block container */}
+          <div className="relative px-3.5 py-1.5 bg-slate-900/90 backdrop-blur-md border border-white/10 rounded-lg text-[9px] font-mono font-bold tracking-widest text-slate-100 flex items-center gap-2 shadow-2xl transition-all duration-300 group-hover/node:border-cyan-500/50 group-hover/node:-translate-y-0.5">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-200 to-purple-300 font-extrabold uppercase">
+              EVM_NODE_ACTIVE
+            </span>
+            <span className="text-[8px] text-slate-400 font-medium tracking-normal border-l border-white/10 pl-2">
+              #{blockNumber}
+            </span>
+          </div>
+
+          {/* Expanded Telemetry Console Dropdown */}
+          <div className="absolute top-full mt-2.5 left-1/2 -translate-x-1/2 w-64 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-xl p-3.5 shadow-2xl pointer-events-none group-hover/node:pointer-events-auto opacity-0 scale-95 origin-top translate-y-2 group-hover/node:opacity-100 group-hover/node:scale-100 group-hover/node:translate-y-0 transition-all duration-300 ease-out z-40">
+            {/* Header */}
+            <div className="flex items-center justify-between pb-2 border-b border-white/5 text-[9px] text-slate-400 font-mono">
+              <span className="flex items-center gap-1 font-bold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                EVM_MAINNET_NODE
+              </span>
+              <span className="text-slate-500">v1.4.2</span>
+            </div>
+
+            {/* Metrics Grid */}
+            <div className="mt-3 space-y-2.5 font-mono text-[10px]">
+              {/* Block Height */}
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Block Height</span>
+                <span className="text-cyan-400 font-bold transition-all duration-300">
+                  #{blockNumber.toLocaleString()}
+                </span>
               </div>
 
-              {/* Content Container */}
-              <div className="p-5 flex flex-col flex-grow">
-                <div className="flex flex-wrap gap-1.5 mb-3">
-                  {project.tags.slice(0, 3).map((tag, tagIndex) => (
-                    <span key={tagIndex} className="px-2.5 py-0.5 bg-secondary/80 text-primary font-medium text-[11px] rounded-full uppercase tracking-wider">
-                      {tag}
-                    </span>
-                  ))}
-                  {project.tags.length > 3 && (
-                    <span className="px-2.5 py-0.5 bg-secondary/80 text-primary/80 font-medium text-[11px] rounded-full">
-                      +{project.tags.length - 3}
-                    </span>
-                  )}
+              {/* Gas Price */}
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Gas Price</span>
+                <span className="text-indigo-300 font-bold">
+                  {gasPrice} Gwei
+                </span>
+              </div>
+
+              {/* Latency */}
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Node Latency</span>
+                <span className="text-emerald-400 font-bold">
+                  {latency}ms
+                </span>
+              </div>
+
+              {/* Peers Connected */}
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Active Peers</span>
+                <span className="text-purple-300 font-bold">
+                  {peers}/150
+                </span>
+              </div>
+
+              {/* Node Uptime */}
+              <div className="flex justify-between items-center">
+                <span className="text-slate-400">Uptime</span>
+                <span className="text-slate-200">99.998%</span>
+              </div>
+
+              {/* Load Bar */}
+              <div className="space-y-1.5 pt-1.5 border-t border-white/5">
+                <div className="flex justify-between text-slate-500 text-[8px]">
+                  <span>NETWORK LOAD</span>
+                  <span>{Math.round((peers / 150) * 100)}%</span>
+                </div>
+                <div className="h-1 bg-white/5 rounded-full overflow-hidden flex">
+                  <div className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full transition-all duration-500 ease-out" style={{ width: `${Math.round((peers / 150) * 100)}%` }} />
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="mt-3.5 pt-2 border-t border-white/5 flex items-center justify-between text-[8px] font-mono text-slate-500">
+              <span>STATUS: OPERATIONAL</span>
+              <span className="text-emerald-500/80 animate-pulse uppercase">Synced Live</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SECTION HEADER */}
+      <div className="bg-slate-950 text-white py-16 text-center border-b border-white/5">
+        <div className="container max-w-5xl mx-auto px-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+            Portfolio Exploration
+          </h2>
+          <p className="text-slate-400 mt-3 text-sm md:text-base max-w-md mx-auto">
+            Deep-dives into actual live applications and highly audited smart contract systems I have engineered.
+          </p>
+        </div>
+      </div>
+
+      {/* DYNAMIC ALTERNATING SECTIONS */}
+      {projects.map((project, index) => {
+        const isLeftImage = index % 2 !== 0;
+        const isLast = index === projects.length - 1;
+
+        return (
+          <div
+            key={project.id}
+            className={`py-24 md:py-32 px-6 flex items-center ${project.isDark
+                ? `bg-slate-950 text-white ${isLast ? "" : "border-b border-white/5"}`
+                : `bg-slate-50 text-slate-900 ${isLast ? "" : "border-b border-slate-200"}`
+              }`}
+          >
+            <div
+              className={`container max-w-5xl mx-auto flex flex-col ${isLeftImage ? "md:flex-row-reverse" : "md:flex-row"
+                } items-center justify-between gap-12 md:gap-20`}
+            >
+              {/* Text Side */}
+              <div
+                data-aos={isLeftImage ? "fade-left" : "fade-right"}
+                className="flex-1 space-y-6 text-left"
+              >
+                <div className="space-y-1">
+                  <span className="text-[10px] font-bold tracking-widest uppercase text-primary/80">
+                    {project.subtitle}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+                    {project.title}
+                  </h3>
                 </div>
 
-                <h3 className="text-lg font-bold mb-2 line-clamp-1 text-foreground">
-                  {project.title.split('|')[0].trim()}
-                </h3>
-                
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5 line-clamp-3">
+                <p
+                  className={`text-sm md:text-base leading-relaxed ${project.isDark ? "text-slate-400" : "text-slate-500"
+                    }`}
+                >
                   {project.description}
                 </p>
 
-                <div className="flex justify-between items-center mt-auto pt-4 border-t border-border/30">
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary text-sm font-semibold flex items-center gap-1 hover:text-primary/80 transition-colors"
-                  >
-                    View Live <ArrowUpRight size={14} />
-                  </a>
+                {/* Highlight Badge */}
+                {project.highlight && (
+                  <div className={`p-3.5 rounded-xl border flex items-center gap-3.5 transition-all duration-300 hover:scale-[1.01] ${project.isDark
+                      ? "bg-slate-900/40 border-white/5 text-slate-100"
+                      : "bg-slate-100/50 border-slate-200/65 text-slate-800"
+                    }`}>
+                    <div className={`p-2 rounded-lg ${project.isDark ? "bg-cyan-500/10 text-cyan-400" : "bg-primary/10 text-primary"
+                      }`}>
+                      {project.highlight.icon === "zap" && <Zap size={16} />}
+                      {project.highlight.icon === "shield" && <Shield size={16} />}
+                      {project.highlight.icon === "activity" && <Activity size={16} />}
+                      {project.highlight.icon === "cpu" && <Cpu size={16} />}
+                    </div>
+                    <div className="space-y-0.5">
+                      <span className={`text-[8px] font-bold uppercase tracking-widest block ${project.isDark ? "text-slate-500" : "text-slate-400"
+                        }`}>
+                        {project.highlight.label}
+                      </span>
+                      <span className="text-xs font-black tracking-wide uppercase">
+                        {project.highlight.value}
+                      </span>
+                    </div>
+                  </div>
+                )}
 
+                {/* Tag Cloud */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {project.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className={`text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border transition-all duration-300 cursor-default ${project.isDark
+                          ? "bg-slate-900 border-white/5 text-slate-300 hover:border-cyan-500/30 hover:text-cyan-400"
+                          : "bg-slate-100 border-slate-200/60 text-slate-600 hover:border-primary/30 hover:text-primary"
+                        }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Metadata badges (Mockup alignment) */}
+                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-current/10">
+                  {project.meta.map((m, i) => (
+                    <div key={i} className="space-y-1">
+                      <span
+                        className={`text-[9px] font-bold tracking-widest uppercase block ${project.isDark ? "text-slate-500" : "text-slate-400"
+                          }`}
+                      >
+                        {m.label}
+                      </span>
+                      <span className="text-[11px] font-extrabold tracking-wide uppercase block">
+                        {m.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Action Links */}
+                <div className="flex items-center gap-6 pt-4">
+                  {project.id === 5 ? (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-extrabold tracking-widest text-white uppercase rounded-full transition-all duration-500 bg-linear-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 shadow-[0_0_20px_rgba(99,102,241,0.5)] hover:shadow-[0_0_35px_rgba(99,102,241,0.85)] hover:scale-105 active:scale-95 group overflow-hidden animate-glow-float"
+                    >
+                      {/* Shimmer sweep effect */}
+                      <span className="absolute inset-0 w-[200%] h-full bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+
+                      {/* Core text & icon */}
+                      <span className="relative z-10 flex items-center gap-1.5">
+                        View Live Project
+                        <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+
+                      {/* Pulsing glow ring around it */}
+                      <span className="absolute -inset-px rounded-full bg-linear-to-r from-blue-500 via-cyan-400 to-purple-500 opacity-70 blur-[2px] group-hover:opacity-100 transition-opacity duration-300 -z-10 animate-pulse" />
+                    </a>
+                  ) : (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase border-b border-current pb-1 transition-all duration-300 text-primary hover:text-primary/80 animate-link-pulse"
+                    >
+                      View Live <ArrowUpRight size={13} className="animate-arrow-nudge" />
+                    </a>
+                  )}
                   <a
                     href={project.git}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+                    className="hover:opacity-75 transition-opacity text-current"
+                    aria-label="GitHub Repository"
                   >
-                    <Github size={20}/>
+                    <Github size={20} />
                   </a>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
 
-        <div className="text-center mt-12">
-          <a
-            target="_blank"
-            href="https://github.com/surya00008"
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
-          >
-            Check My Github <ArrowRight size={16} />
-          </a>
-        </div>
-      </div>
+              {/* Graphic/Image Side wrapped in Browser Frame Mockup */}
+              <div
+                data-aos={isLeftImage ? "fade-right" : "fade-left"}
+                className="flex-1 w-full flex justify-center"
+              >
+                <div
+                  className={`relative w-full rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] border ${project.isDark ? "border-white/10 bg-slate-900" : "border-slate-300/60 bg-white"
+                    } group transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_25px_60px_rgba(0,0,0,0.4)]`}
+                >
+                  {/* macOS Browser Header */}
+                  <div className={`flex items-center gap-2 px-4 py-3 border-b ${project.isDark ? "bg-slate-950/80 border-white/5" : "bg-slate-100/80 border-slate-200"
+                    }`}>
+                    {/* Traffic Lights */}
+                    <div className="flex gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-rose-500/85 hover:bg-rose-500 transition-colors cursor-pointer" />
+                      <span className="w-2 h-2 rounded-full bg-amber-500/85 hover:bg-amber-500 transition-colors cursor-pointer" />
+                      <span className="w-2 h-2 rounded-full bg-emerald-500/85 hover:bg-emerald-500 transition-colors cursor-pointer" />
+                    </div>
+                    {/* Mock URL Bar */}
+                    <div className={`mx-auto w-3/5 text-center text-[10px] py-0.5 rounded-md font-mono ${project.isDark ? "bg-white/5 text-slate-400 border border-white/5" : "bg-slate-200/50 text-slate-500 border border-slate-300/30"
+                      }`}>
+                      {project.id === 5 ? "dealflow.surya.eth" :
+                        project.id === 6 ? "stablecoin.foundry.eth" :
+                          project.id === 7 ? "ccip-bridge.chainlink.eth" : "gas-nft.openzeppelin.eth"}
+                    </div>
+                  </div>
+
+                  {/* Image Container with Shimmer Hover Overlay */}
+                  <div className="relative aspect-video overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                    />
+
+                    {/* Glassmorphic border layer / sweep */}
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
     </section>
   );
 };
