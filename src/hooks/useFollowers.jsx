@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
  * Currently uses a mock delayed response since Instagram blocks client-side CORS scraping.
  * Drop your API endpoint into the fetch function when deploying to a backend (like Vercel).
  */
-export const useFollowers = (initialCount = 25000) => {
+export const useFollowers = (initialCount = 36400) => {
   const [followers, setFollowers] = useState(initialCount);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,8 +19,8 @@ export const useFollowers = (initialCount = 25000) => {
         
         await new Promise(resolve => setTimeout(resolve, 800)); // Simulate API call network latency
         
-        // Simulating the dynamic update because you mentioned you have >> 25k now!
-        const liveCount = 25200; 
+        // Simulating the dynamic update because you mentioned you have >> 36k now!
+        const liveCount = 36400; 
         
         setFollowers(liveCount);
       } catch (err) {
