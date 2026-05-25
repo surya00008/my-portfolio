@@ -2,72 +2,100 @@ import { useState, useEffect } from "react";
 import { cn } from "../lib/utils";
 import { Menu, X } from "lucide-react";
 
-const navItems = [
-    {name: 'Home', url: '#home'},
-    {name: 'About', url: '#about'},
-    {name: 'Skills', url: '#skills'},
-    {name: 'Projects', url: '#projects'},
-    {name: 'Contact', url: '#contact'},
-];
-
 export const Navbar = () => {
-    const[isScrolled,setIsScrolled] = useState(true);
-    const[isMenuOpen,setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () =>{
-            setIsScrolled(window.scrollY > 10);
-        };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
 
-        window.addEventListener('scroll',handleScroll);
-        return () => window.removeEventListener('scroll',handleScroll);
-    }, [])
-    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-    return <nav className= {cn("fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/60 backdrop-blur-md shadow-sm border-b border-border/40" : "py-5"
-    )}>
-        <div className="container flex items-center justify-between md:justify-around">
-            <a className="font-bold text-xl text-primary flex items-center" href="#home">
-                <span className="relative z-10">
-                    <span className="text-glow text-foreground">Surya</span> Code
-                </span>
-            </a>
+  return (
+    <nav
+      className={cn(
+        "fixed w-full z-50 transition-all duration-300",
+        isScrolled
+          ? "py-4 bg-background/80 backdrop-blur-lg border-b border-border/20 shadow-lg"
+          : "py-6 bg-transparent"
+      )}
+    >
+      <div className="container mx-auto max-w-5xl px-6 flex items-center justify-between">
+        {/* LOGO */}
+        <a
+          href="#home"
+          className="text-lg font-bold tracking-widest text-foreground hover:opacity-80 transition-opacity"
+        >
+          SURYA SINGU
+        </a>
 
-            {/* Desktop Nav */}
-               <div className="hidden md:flex space-x-8">
-                {navItems.map((item, key) => (
-                    <a href={item.url} key={key} className="text-foreground/80 hover:text-primary transition-colors duration-500">
-                        {item.name}
-                    </a>
-                ))}
-               </div>
-
-
-            {/* Mobile Nav */}
-
-            <button onClick={()=> setIsMenuOpen((prev)=> !prev)} 
-                    className="md:hidden p-2 mr-8 text-foreground z-50 cursor-pointer"
-                    aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
-            >
-                {isMenuOpen ? <X size={24}/> : <Menu size={24}/>}
-            </button>
-
-            
-            <div className={cn("fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-                "transition-all duration-300 md:hidden",
-                isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            )}>
-               <div className=" flex flex-col space-y-8 text-xl">
-                  {navItems.map((item, key) => (
-                    <a href={item.url} key={key} className="text-foreground/80 hover:text-primary transition-colors duration-500" 
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                        {item.name}
-                    </a>
-                   ))}
-               </div>
-            </div>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-10 text-[11px] font-bold tracking-widest uppercase text-foreground/80">
+          <a
+            href="#about"
+            className="hover:text-primary transition-colors duration-300"
+          >
+            ABOUT
+          </a>
+          <a
+            href="#projects"
+            className="hover:text-primary transition-colors duration-300"
+          >
+            PORTFOLIO
+          </a>
+          <a
+            href="#contact"
+            className="relative py-1 text-foreground hover:text-primary transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] after:bg-primary after:transform after:scale-x-100 after:transition-transform"
+          >
+            HIRE ME AS YOUR AWESOME PARTNER
+          </a>
         </div>
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setIsMenuOpen((prev) => !prev)}
+          className="md:hidden p-2 text-foreground z-50 cursor-pointer"
+          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+        >
+          {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+        </button>
+
+        {/* Mobile Nav Overlay */}
+        <div
+          className={cn(
+            "fixed inset-0 bg-background/98 backdrop-blur-xl z-40 flex flex-col items-center justify-center gap-8 text-sm font-bold tracking-widest uppercase transition-all duration-300 md:hidden",
+            isMenuOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          )}
+        >
+          <a
+            href="#about"
+            onClick={() => setIsMenuOpen(false)}
+            className="hover:text-primary transition-colors"
+          >
+            ABOUT
+          </a>
+          <a
+            href="#projects"
+            onClick={() => setIsMenuOpen(false)}
+            className="hover:text-primary transition-colors"
+          >
+            PORTFOLIO
+          </a>
+          <a
+            href="#contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-center underline decoration-primary decoration-2 underline-offset-4 hover:text-primary transition-colors"
+          >
+            HIRE ME AS YOUR AWESOME PARTNER
+          </a>
+        </div>
+      </div>
     </nav>
-}
+  );
+};
